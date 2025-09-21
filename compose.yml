@@ -3,7 +3,6 @@ version: "3.9"
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql_db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: Akhil123
@@ -17,7 +16,6 @@ services:
     build:
       context: ./billingsoftware
       dockerfile: Dockerfile
-    container_name: backend
     restart: always
     ports:
       - "9191:8082"   # host:container
@@ -32,7 +30,6 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    container_name: frontend
     restart: always
     ports:
       - "5173:5173"
