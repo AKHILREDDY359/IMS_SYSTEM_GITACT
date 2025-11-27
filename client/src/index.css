@@ -1,34 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  /* Primary Colors - EXACT palette */
-  --bg-primary: #FFE8DB; /* peach */
-  --bg-secondary: #FFE8DB; /* same as primary background */
-  --bg-tertiary: #5682B1; /* medium blue */
+  /* Project theme: Orange / Light-Orange / White */
+  /* Backgrounds */
+  --bg-primary: #ffffff;   /* white */
+  --bg-secondary: #FFF4E6; /* light orange */
+  --bg-tertiary: #FFE8CC;  /* softer light orange */
 
-  /* Accent Colors - EXACT palette */
-  --accent-primary: #5682B1; /* primary accent */
-  --accent-secondary: #5682B1; /* use primary blue */
-  --accent-tertiary: #000000; /* black */
+  /* Accents */
+  --accent-primary: #FD7E14; /* orange */
+  --accent-secondary: #FFA94D; /* light orange accent */
+  --accent-tertiary: #CC6B00; /* deep orange for strong contrast */
 
-  /* Text Colors - use dark */
-  --text-light: #000000;
-  --text-dark: #000000;
-  --text-muted: #000000;
+  /* Text */
+  --text-light: #111827;  /* near-black */
+  --text-dark: #111827;   /* near-black */
+  --text-muted: #6B7280;  /* slate gray */
   --text-white: #ffffff;
 
   /* UI */
-  --border-color: rgba(113, 128, 150, 0.15);
-  --shadow-color: rgba(113, 128, 150, 0.08);
-  --success-color: #48bb78;
-  --warning-color: #FF7A00;
-  --danger-color: #f56565;
+  --border-color: rgba(17, 24, 39, 0.12);
+  --shadow-color: rgba(17, 24, 39, 0.08);
+  --success-color: #22c55e;
+  --warning-color: #f59e0b; /* amber */
+  --danger-color: #ef4444;
 
-  /* Gradients mapped to SOLID colors (no combined colors) */
-  --gradient-primary: #5682B1;   /* use accent-primary solid */
-  --gradient-secondary: #FFE8DB; /* use bg-primary solid */
-  --gradient-tertiary: #000000;  /* black solid */
-  --gradient-smooth: #5682B1;    /* primary blue solid */
+  /* Solid gradient tokens (used as solids in components) */
+  --gradient-primary: var(--accent-primary);
+  --gradient-secondary: var(--bg-secondary);
+  --gradient-tertiary: var(--accent-tertiary);
+  --gradient-smooth: var(--accent-secondary);
 
   /* Transitions */
   --transition-speed: 0.4s;
@@ -39,7 +40,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Outfit', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 /* index.css or global.css */
@@ -52,6 +53,14 @@ html, body, #root {
 body {
   color: var(--text-dark);
   background-color: var(--bg-primary);
+}
+
+/* Light app background sections can use bg-secondary */
+.section-light {
+  background-color: var(--bg-secondary);
+}
+.section-soft {
+  background-color: var(--bg-tertiary);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -86,9 +95,9 @@ input[type="number"],
 input[type="email"],
 input[type="password"],
 select {
-  background-color: var(--bg-primary) !important;  /* peach */
-  color: var(--text-dark) !important;              /* black text */
-  border: 1px solid var(--accent-primary) !important; /* blue border */
+  background-color: var(--bg-primary) !important;
+  color: var(--text-dark) !important;
+  border: 1px solid var(--accent-secondary) !important;
   box-shadow: none !important;
 }
 
@@ -120,6 +129,12 @@ button {
   background-color: var(--accent-primary);
   color: var(--bg-primary);
   border: none;
+}
+
+.btn:hover,
+button:hover {
+  background-color: var(--accent-tertiary);
+  color: var(--bg-primary);
 }
 
 .btn:hover,

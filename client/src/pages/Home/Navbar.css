@@ -98,13 +98,13 @@
 }
 
 .nav-menu li {
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 .nav-menu a {
   color: var(--bg-primary);
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 1.25rem;
   transition: color var(--transition-speed) var(--transition-smooth);
   position: relative;
 }
@@ -131,11 +131,13 @@
 .login-btn {
   background: var(--accent-primary);
   color: var(--bg-primary) !important;
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 25px;
   border: none;
   box-shadow: 0 4px 12px var(--shadow-color);
   transition: all var(--transition-speed) var(--transition-smooth);
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .login-btn:hover {
@@ -264,8 +266,9 @@
 
   /* Mobile menu uses light background, so use dark text for contrast */
   .nav-menu a {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--text-light);
+    font-weight: 700;
   }
 
   .user-chip {

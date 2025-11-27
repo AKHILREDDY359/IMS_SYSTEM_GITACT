@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private String normalizeRole(String role) {
+        String r = role == null ? "" : role.trim().toUpperCase();
+        return r.startsWith("ROLE_") ? r : "ROLE_" + r;
+    }
+
     @Override
     public UserResponse createUser(UserRequest request) {
         UserEntity newUser = convertToEntity(request);
@@ -44,7 +49,7 @@ public class UserServiceImpl implements UserService {
                 .userId(UUID.randomUUID().toString())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole().toUpperCase())
+                .role(normalizeRole(request.getRole()))
                 .name(request.getName())
                 .build();
     }
@@ -53,7 +58,7 @@ public class UserServiceImpl implements UserService {
     public String getUserRole(String email) {
         UserEntity existingUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found for the email: "+email));
-        return existingUser.getRole();
+        return normalizeRole(existingUser.getRole());
     }
 
     @Override

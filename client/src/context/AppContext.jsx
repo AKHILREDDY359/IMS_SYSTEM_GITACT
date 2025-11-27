@@ -52,18 +52,21 @@ export const AppContextProvider = (props) => {
 
     useEffect(() => {
         async function loadData() {
-            if (localStorage.getItem("token") && localStorage.getItem("role")) {
-                setAuthData(
-                    localStorage.getItem("token"),
-                    localStorage.getItem("role")
-                );
+            const token = localStorage.getItem("token");
+            const role = localStorage.getItem("role");
+            if (token && role) {
+                setAuthData(token, role);
+                try {
+                    const [response, itemResponse] = await Promise.all([
+                        fetchCategories(),
+                        fetchItems()
+                    ]);
+                    setCategories(response.data);
+                    setItemsData(itemResponse.data);
+                } catch (err) {
+                    console.error('Failed to load initial data', err);
+                }
             }
-            const response = await fetchCategories();
-            const itemResponse = await fetchItems();
-            console.log('item response', itemResponse);
-            setCategories(response.data);
-            setItemsData(itemResponse.data);
-
         }
         loadData();
     }, []);
